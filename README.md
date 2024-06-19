@@ -4,8 +4,7 @@
 {
   "pluginId": "com.dugunbuketi.statistics",
   "uiDefinition": {
-    "height": 200,
-    "width": 200
+    "height": 600
   },
   "src": "https://dugunbuketi-panel.github.io/grispi-statistics-plugin/build/"
 }
