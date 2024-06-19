@@ -7,7 +7,7 @@
     "height": 200,
     "width": 200
   },
-  "src": "https://dugunbuketi-panel.github.io/grispi-applications-plugin/"
+  "src": "https://dugunbuketi-panel.github.io/grispi-statistics-plugin/build/"
 }
 ```
 
@@ -15,6 +15,6 @@
 
 ```json
 {
-  "token": "..."
+  "access_token": "..."
 }
 ```
