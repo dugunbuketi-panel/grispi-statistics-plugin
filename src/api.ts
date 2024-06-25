@@ -36,5 +36,5 @@ export const getStats = async (
     return (await response.json()) as GetStatsResponse;
   }
 
-  throw { error: true };
+  throw Error("Failed to fetch.");
 };
