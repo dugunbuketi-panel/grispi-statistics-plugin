@@ -7,28 +7,28 @@ import React, {
 } from "react";
 
 import { grispiAPI } from "@/grispi/client/api";
-import { GrispiBundle, Settings, Ticket } from "@/types/grispi.type";
+import { GrispiBundle, Ticket } from "@/types/grispi.type";
 
 type GrispiContextType = {
   ticket: Ticket | null;
-  settings: Settings | null;
+  bundle: GrispiBundle | null;
   loading: boolean;
 };
 
 const GrispiContext = createContext<GrispiContextType | null>(null);
 
-const plugin = window.GrispiClient.instance();
+const plugin = window.Grispi.instance();
 
 export const GrispiProvider: React.FC<{
   children: ReactNode;
 }> = ({ children }) => {
   const [loading, setLoading] = useState<boolean>(true);
+  const [bundle, setBundle] = useState<GrispiBundle | null>(null);
   const [ticket, setTicket] = useState<Ticket | null>(null);
-  const [settings, setSettings] = useState<Settings | null>(null);
 
   useEffect(() => {
-    plugin._init().then(async (bundle: GrispiBundle) => {
-      setLoading(true);
+    plugin.init().then(async (bundle: GrispiBundle) => {
+      setBundle(bundle);
 
       grispiAPI.authentication.setTenantId(bundle.context.tenantId);
       grispiAPI.authentication.setToken(bundle.context.token);
@@ -38,29 +38,10 @@ export const GrispiProvider: React.FC<{
       );
 
       setTicket(ticket);
-      setSettings(bundle.settings);
       setLoading(false);
     });
 
     plugin.currentTicketUpdated = async (ticket: Ticket) => {
-      setLoading(true);
-
-      try {
-        const response = await grispiAPI.tickets.getTicket(ticket.key);
-        setTicket(response);
-      } catch (err) {
-        console.error(
-          "grispi-context",
-          "currentTicketUpdated",
-          "Error when fetching ticket details",
-          ticket.key
-        );
-      }
-
-      setLoading(false);
-    };
-
-    plugin.activeTicketChanged = async (ticket: Ticket) => {
       setLoading(true);
 
       try {
@@ -83,7 +64,7 @@ export const GrispiProvider: React.FC<{
     <GrispiContext.Provider
       value={{
         ticket,
-        settings,
+        bundle,
         loading,
       }}
     >

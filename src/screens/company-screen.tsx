@@ -19,10 +19,10 @@ export const CompanyScreen = observer(() => {
   const [loading, setLoading] = useState<boolean>(true);
   const [companies, setCompanies] = useState<CompanyStat[]>([]);
   const [posts, setPosts] = useState<PostStat[]>([]);
-  const { ticket, settings } = useGrispi();
+  const { ticket, bundle } = useGrispi();
 
   useEffect(() => {
-    if (!settings?.access_token) return;
+    if (!bundle?.settings?.access_token) return;
     if (typeof ticket?.fieldMap["ts.subject"]?.value !== "string") return;
 
     const handleGetStats = async () => {
@@ -31,7 +31,7 @@ export const CompanyScreen = observer(() => {
 
         const { companies, posts } = await getStats(
           { searchTerm: ticket.fieldMap["ts.subject"]?.value },
-          { Authorization: `Bearer ${settings.access_token}` }
+          { Authorization: `Bearer ${bundle.settings.access_token}` }
         );
 
         setCompanies(companies ?? []);
@@ -44,7 +44,7 @@ export const CompanyScreen = observer(() => {
     };
 
     handleGetStats();
-  }, [ticket, settings]);
+  }, [ticket, bundle]);
 
   return (
     <Screen>
