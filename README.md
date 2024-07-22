@@ -1,12 +1,18 @@
+### Plugin ID
+
+com.dugunbuketi.statistics
+
 ### Plugin Manifest
 
 ```json
 {
-  "pluginId": "com.dugunbuketi.statistics",
+  "title": "DüğünBuketi İstatistikleri",
+  "src": "https://dugunbuketi-panel.github.io/grispi-statistics-plugin/build/",
   "uiDefinition": {
-    "height": 600
+    "height": 900
   },
-  "src": "https://dugunbuketi-panel.github.io/grispi-statistics-plugin/build/"
+  "singleton": false,
+  "lazy": true
 }
 ```
 
