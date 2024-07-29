@@ -23,14 +23,14 @@ export const CompanyScreen = observer(() => {
 
   useEffect(() => {
     if (!bundle?.settings?.access_token) return;
-    if (typeof ticket?.fieldMap["ts.subject"]?.value !== "string") return;
+    if (typeof ticket?.fieldMap["tu.ilan_ad"]?.value !== "string") return;
 
     const handleGetStats = async () => {
       try {
         setLoading(true);
 
         const { companies, posts } = await getStats(
-          { searchTerm: ticket.fieldMap["ts.subject"]?.value },
+          { searchTerm: ticket.fieldMap["tu.ilan_ad"]?.value },
           { Authorization: `Bearer ${bundle.settings.access_token}` }
         );
 
