@@ -9,6 +9,7 @@ export type CompanyStat = {
   totalApplicationCount: number;
   visitorCount: number;
   whatsappApplicationCount: number;
+  postApplicationCountList: PostStat[];
 };
 
 export type PostStat = {
@@ -23,3 +24,5 @@ export type PostStat = {
   whatsappApplicationCount: number;
   confirmedApplicationCount: number;
 };
+
+export type PostStatPeriod = "CUSTOM" | "COMPANY_OPENING_DATE";

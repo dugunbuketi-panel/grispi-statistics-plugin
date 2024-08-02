@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/grispi-statistics-plugin/build/static/css/main.461720cf.css",
-    "main.js": "/grispi-statistics-plugin/build/static/js/main.4a47f62e.js",
+    "main.css": "/grispi-statistics-plugin/build/static/css/main.fece60ef.css",
+    "main.js": "/grispi-statistics-plugin/build/static/js/main.641a5041.js",
     "index.html": "/grispi-statistics-plugin/build/index.html",
-    "main.461720cf.css.map": "/grispi-statistics-plugin/build/static/css/main.461720cf.css.map",
-    "main.4a47f62e.js.map": "/grispi-statistics-plugin/build/static/js/main.4a47f62e.js.map"
+    "main.fece60ef.css.map": "/grispi-statistics-plugin/build/static/css/main.fece60ef.css.map",
+    "main.641a5041.js.map": "/grispi-statistics-plugin/build/static/js/main.641a5041.js.map"
   },
   "entrypoints": [
-    "static/css/main.461720cf.css",
-    "static/js/main.4a47f62e.js"
+    "static/css/main.fece60ef.css",
+    "static/js/main.641a5041.js"
   ]
 }

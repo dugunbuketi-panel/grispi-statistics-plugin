@@ -1,5 +1,11 @@
 import { InfoCard } from "./info-card";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { FC } from "react";
 
 import { formatMinutes } from "@/lib/utils";
@@ -14,6 +20,7 @@ export const CompanyCard: FC<CompanyCardProps> = ({ company }) => {
     <Card className="rounded-none border-x-0">
       <CardHeader>
         <CardTitle>{company.companyName}</CardTitle>
+        <CardDescription>Şirket İstatistikleri</CardDescription>
       </CardHeader>
       <CardContent className="space-y-3">
         <div className="grid grid-cols-3 gap-3">

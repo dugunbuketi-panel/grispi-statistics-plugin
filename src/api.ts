@@ -1,14 +1,10 @@
 import { CompanyStat, PostStat } from "./types/bonvedi.type";
 
-type GetStatsRequest = {
+export type GetStatsRequest = {
   searchTerm: string;
-  postIds?: number[];
+  startDate: string | null;
+  endDate: string | null;
 };
-
-interface GetStatsResponse extends Response {
-  companies: CompanyStat[];
-  posts: PostStat[];
-}
 
 export const getStats = async (
   payload: GetStatsRequest,
@@ -18,10 +14,9 @@ export const getStats = async (
     search_term: payload.searchTerm,
   };
 
-  const postIds = payload.postIds ? payload.postIds.join(",") : "";
-
-  if (postIds) {
-    params["post_id"] = postIds;
+  if (payload.startDate && payload.endDate) {
+    params["start_date"] = payload.startDate;
+    params["end_date"] = payload.endDate;
   }
 
   const queryParams = new URLSearchParams(params).toString();
@@ -33,7 +28,7 @@ export const getStats = async (
   });
 
   if (response.ok) {
-    return (await response.json()) as GetStatsResponse;
+    return (await response.json()) as CompanyStat[];
   }
 
   throw Error("Failed to fetch.");
